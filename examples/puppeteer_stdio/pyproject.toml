@@ -1,0 +1,17 @@
+[project]
+name = "puppeteer-stdio-mcp-server"
+version = "0.1.0"
+description = "Puppeteer mcp server by stdio"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastmcp>=2.4.0",
+]
+
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "pytest>=8.3.5",
+    "ruff>=0.11.8",
+]
