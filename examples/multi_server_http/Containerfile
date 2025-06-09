@@ -1,0 +1,20 @@
+FROM docker:dind
+
+ARG SERVICE_NAME=multi-mcp-server-http \
+    SERVICE_DIR=/opt/$SERVICE_NAME
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=Asia/Seoul
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+RUN uv python install 3.13
+
+COPY pyproject.toml $SERVICE_DIR/
+WORKDIR $SERVICE_DIR
+RUN uv sync
+
+ADD . $SERVICE_DIR
+RUN chmod +x entrypoint.sh
+
+EXPOSE 8000
+ENTRYPOINT ["./entrypoint.sh"]
+CMD ["--port", "8000"]

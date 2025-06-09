@@ -1,0 +1,18 @@
+[project]
+name = "multi-mcp-server-http"
+version = "0.1.0"
+description = "Multi mcp server by streamable http protocol"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.115.12",
+    "fastmcp>=2.4.0"
+]
+
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "pytest>=8.3.5",
+    "ruff>=0.11.8",
+]
